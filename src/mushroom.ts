@@ -23,6 +23,8 @@ import "./cards/template-card/template-card";
 import "./cards/title-card/title-card";
 import "./cards/update-card/update-card";
 import "./cards/vacuum-card/vacuum-card";
+import "./cards/enhanced-light-card/enhanced-light-card";
+import "./cards/split-layout-card/split-layout-card";
 
 import "./badges/template/template-badge";
 

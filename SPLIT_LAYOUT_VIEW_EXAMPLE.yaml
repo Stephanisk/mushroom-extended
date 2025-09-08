@@ -1,0 +1,81 @@
+# Split Layout View Example
+# This shows how to create a full-page 28%/72% split layout
+
+# Add this to your Home Assistant dashboard configuration:
+
+views:
+  - title: "Split Dashboard"
+    path: "split-dashboard" 
+    panel: true                    # IMPORTANT: This makes the card span the entire view
+    cards:
+      - type: custom:mushroom-split-layout-card
+        sidebar_width: 28          # 28% sidebar width
+        gap: 16                    # 16px gap between columns
+        sidebar:
+          background_color: "#f8f9fa"    # Light gray sidebar
+          cards:
+            # Add any cards you want in the 28% sidebar
+            - type: weather-forecast
+              entity: weather.home
+            - type: custom:mushroom-enhanced-light-card
+              entity: light.hallway
+              button_layout: vertical-enhanced
+              font_size: 14
+            - type: entities
+              title: "Quick Controls"
+              entities:
+                - input_boolean.lobby
+                - sensor.room_temperature
+        main:
+          background_color: "#ffffff"     # White main area
+          cards:
+            # Add any cards you want in the 72% main area
+            - type: markdown
+              content: |
+                # Welcome to Your Smart Home
+                This is your main dashboard area (72% width)
+            - type: horizontal-stack
+              cards:
+                - type: custom:mushroom-enhanced-light-card
+                  entity: light.ceiling_lights
+                  button_layout: vertical-enhanced
+                  double_tap_action:
+                    action: enhanced-more-info
+                - type: custom:mushroom-enhanced-light-card
+                  entity: light.ceiling_lights
+                  button_layout: inline
+            - type: picture-entity
+              entity: camera.front_door
+              camera_view: live
+
+# Alternative: Different sidebar width
+  - title: "Wide Sidebar"
+    path: "wide-sidebar"
+    panel: true
+    cards:
+      - type: custom:mushroom-split-layout-card
+        sidebar_width: 35          # 35% sidebar, 65% main
+        gap: 12
+        sidebar:
+          background_image: "/local/images/sidebar-bg.jpg"  # Background image
+          cards:
+            - type: custom:mushroom-enhanced-light-card
+              entity: light.living_room
+              button_layout: vertical-enhanced
+              text_align: center
+        main:
+          cards:
+            - type: grid
+              columns: 2
+              cards:
+                - type: custom:mushroom-enhanced-light-card
+                  entity: light.bedroom
+                - type: custom:mushroom-enhanced-light-card  
+                  entity: light.kitchen
+
+# Key Points:
+# 1. Use panel: true to make the split layout span the entire view
+# 2. The split layout card becomes the container for the entire page
+# 3. Add any cards (built-in or custom) to sidebar.cards[] and main.cards[]
+# 4. Configure background colors, images, and spacing as needed
+# 5. Works with both YAML and UI card configuration
