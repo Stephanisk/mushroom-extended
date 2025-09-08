@@ -18,3 +18,7 @@ dist
 .vscode/settings.json
 .idea
 backup/
+ha-config/.storage/
+ha-config/home-assistant.log*
+ha-config/known_devices.yaml
+ha-config/deps/

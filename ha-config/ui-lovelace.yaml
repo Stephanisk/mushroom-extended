@@ -1,0 +1,27 @@
+title: Home
+views:
+  - title: Overview
+    path: overview
+    icon: mdi:home-assistant
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: |
+              ## 🍄 Mushroom Development Environment
+              
+              Welcome to your Mushroom development setup!
+              
+              - **Gallery**: Check out the "Mushroom Gallery" dashboard in the sidebar
+              - **Development**: Edit code in `src/`, run `npm run ha:rebuild`, then refresh
+              - **Resources**: Mushroom cards are loaded from `/local/mushroom-dev/loader.js`
+              
+              Happy coding! 🚀
+          
+          - type: entities
+            title: Demo Entities
+            entities:
+              - input_boolean.lobby
+              - light.lobby
+              - sensor.room_temperature

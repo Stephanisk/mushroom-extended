@@ -1,91 +1,97 @@
-# Mushroom Development Environment
+# Mushroom Custom Cards - Development Environment
 
-This is a complete development environment for the Mushroom Lovelace cards with Home Assistant integration.
+This is a development environment for custom Mushroom cards with enhanced functionality.
 
-## Setup Complete ✅
+## 🎯 What's Available
 
-The environment has been automatically configured with:
+### Enhanced Light Card v2.1
+Advanced light card with background image opacity, positioning, and enhanced popup functionality.
 
-- ✅ Cloned lovelace-mushroom repository
-- ✅ Configured workspace with npm scripts  
-- ✅ Docker Compose setup for Home Assistant
-- ✅ Auto-sync tools for build artifacts
-- ✅ Auto-generated gallery dashboard with all 18 Mushroom cards
-- ✅ Home Assistant running on http://localhost:8123
+### Split Layout Card v1.0  
+Flexible multi-column layout system with independent column heights.
 
-## Quick Start
+## 🚀 Quick Start
 
-1. **First time setup**: Open http://localhost:8123 and complete the Home Assistant onboarding
-2. **View gallery**: After onboarding, click "Mushroom Gallery" in the left sidebar
-3. **See all cards**: The gallery shows all 18 Mushroom card types with working configurations
-
-## Development Workflow
-
-### Hot Reload Development
+### Development Mode
 ```bash
-# Edit code in src/
-# Then rebuild and sync:
+# Start Home Assistant development environment
+docker-compose up -d
+
+# Build and sync cards to HA
 npm run ha:rebuild
 
-# Hard refresh browser (Ctrl/Cmd+Shift+R) to see changes
+# Access HA at http://localhost:8123
 ```
 
-### Available Commands
+### Production Installation
+All production-ready files are in `Backup_Finals/`:
+
+- **Enhanced Light Card:** `Backup_Finals/enhanced_light_card_final_20250908_181022/`
+- **Split Layout Card:** `Backup_Finals/split_layout_card_final_20250908_191724/`
+
+Each backup contains:
+- ✅ Source code
+- ✅ Complete documentation  
+- ✅ Installation instructions
+- ✅ Configuration examples
+- ✅ Quick reference guides
+
+## 📁 Project Structure
+
+```
+├── src/cards/
+│   ├── enhanced-light-card/     # Enhanced light card source
+│   └── split-layout-card/       # Split layout card source
+├── src/shared/popup/            # Enhanced popup system
+├── Backup_Finals/               # Production-ready backups
+│   ├── enhanced_light_card_final_20250908_181022/
+│   └── split_layout_card_final_20250908_191724/
+├── ha-config/                   # Home Assistant config
+└── tools/                       # Build and sync tools
+```
+
+## 🔧 Development Commands
+
 ```bash
-npm run build:mushroom    # Build Mushroom cards
-npm run ha:sync          # Sync build to HA /www/mushroom-dev/
-npm run ha:gallery       # Generate gallery dashboard
-npm run ha:rebuild       # Build + sync + gallery
-npm run ha:up           # Full startup (build + sync + gallery + docker up)
-npm run ha:down         # Stop Home Assistant
-npm run ha:logs         # View HA logs
+npm run build          # Build cards
+npm run ha:sync        # Sync to Home Assistant  
+npm run ha:rebuild     # Build + sync + gallery
+npm run ha:gallery     # Generate gallery
 ```
 
-### Continuous Development
-```bash
-# Terminal 1: Keep HA running
-docker compose up
+## 📚 Documentation
 
-# Terminal 2: Watch for changes and auto-rebuild
-npx chokidar "src/**/*" --command "npm run ha:rebuild" --initial
-```
+Complete documentation is available in each backup directory:
 
-## Architecture
+- **README.md** - Overview and installation
+- **EXAMPLES.yaml** - Configuration examples
+- **DOCUMENTATION.md** - Complete technical reference
+- **QUICK_REFERENCE.md** - Developer quick reference
 
-- **Build Output**: `dist/mushroom.js` (single bundle)
-- **HA Integration**: Synced to `/www/mushroom-dev/` with auto-generated `loader.js`
-- **Gallery**: Auto-generates YAML dashboard with all card types
-- **Entities**: Uses demo entities + custom light.lobby entity for testing
+## 🎨 Features
 
-## Gallery Features
+### Enhanced Light Card
+- Background image opacity control (0.0 - 1.0)
+- 9 positioning options for background images
+- Glass effects and watermark styles
+- Enhanced popup with sub-entities and effects
+- Vertical-enhanced layout option
+- Custom styling (borders, shadows, colors)
 
-The Mushroom Gallery dashboard includes:
-- ⭐ Interactive "Boutique Rating" template card at the top
-- All 18 original Mushroom card types with appropriate demo entities
-- **NEW**: `mushroom-enhanced-light-card` with unified controls
-- Safe default configurations for each card type
+### Split Layout Card
+- Independent column heights
+- Flexible sidebar and main content areas
+- Responsive design
+- Custom styling and branding
+- No whitespace issues from grid layouts
 
-## Enhanced Light Card
+## 🏠 Home Assistant Integration
 
-The new `mushroom-enhanced-light-card` provides:
-- **Unified Controls**: All 3 control buttons (brightness, color temp, color) visible simultaneously
-- **Single Slider**: One adaptive slider that changes behavior based on active control
-- **Command on Release**: Only sends service calls when slider is released (no command flooding)
-- **Separate from Original**: Won't conflict with existing Mushroom installations
+The development environment includes:
+- Docker Compose setup
+- Auto-sync build artifacts
+- Live reload during development
+- Gallery dashboard with examples
+- Complete HA configuration
 
-## Troubleshooting
-
-- **Cards not loading**: Check browser console for errors, ensure loader.js is accessible
-- **Gallery not updating**: Run `npm run ha:gallery` and hard refresh browser
-- **Build issues**: Check `npm run build:mushroom` output for errors
-- **HA not starting**: Check `docker compose logs homeassistant`
-
-## Next Steps
-
-1. Fork the original repository: https://github.com/piitaya/lovelace-mushroom
-2. Update the git remote to point to your fork
-3. Start customizing cards in `src/cards/`
-4. Use `npm run ha:rebuild` after each change
-5. Deploy final builds with versioned URLs for production
-
-Happy coding! 🍄
+Ready for both development and production use!

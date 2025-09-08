@@ -1,0 +1,33 @@
+homeassistant:
+  name: Mushroom Dev
+
+# Use storage mode with YAML dashboards
+lovelace:
+  dashboards:
+    mushroom-gallery:
+      mode: yaml
+      title: Mushroom Gallery
+      icon: mdi:star
+      show_in_sidebar: true
+      filename: lovelace/mushroom-gallery.yaml
+    split-layout-demo:
+      mode: yaml
+      title: Split Layout Demo
+      icon: mdi:view-split-vertical
+      show_in_sidebar: true
+      filename: lovelace/split-layout-demo.yaml
+
+# Minimal helper entities usable by many cards
+input_boolean:
+  lobby:
+    name: Lobby
+
+template:
+  - sensor:
+      - name: Room Temperature
+        unique_id: room_temp
+        state: 21.4
+        unit_of_measurement: "°C"
+
+# Optional demo domain to broaden available entities (safe to keep)
+demo:

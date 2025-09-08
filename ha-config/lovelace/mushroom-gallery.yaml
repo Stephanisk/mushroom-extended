@@ -1,0 +1,35 @@
+title: Mushroom Gallery
+# Updated: 2025-09-08T16:01:50.347Z
+views:
+  - title: Gallery
+    path: gallery
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: custom:mushroom-template-card
+            primary: ⭐ Boutique Rating
+            secondary: Tap the stars
+            icon: mdi:star
+            tap_action:
+              action: call-service
+              service: light.toggle
+              data:
+                entity_id: light.ceiling_lights
+          - type: custom:mushroom-enhanced-light-card-with-popup
+            type: custom:mushroom-enhanced-light-card
+            entity: light.ceiling_lights
+            show_brightness_control: true
+            show_color_temp_control: true
+            show_color_control: true
+            collapsible_controls: false
+            button_layout: vertical-enhanced
+            font_size: 16
+            text_align: center
+            show_brightness_percentage: false
+            double_tap_action:
+              action: enhanced-more-info
+            enhanced_popup:
+              show_sub_entities: true
+              show_effects: true
+              show_advanced_controls: true
