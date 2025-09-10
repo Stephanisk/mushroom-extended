@@ -1,0 +1,467 @@
+# ============================================================================
+# ENHANCED LIGHT CARD - COMPLETE FEATURE REFERENCE & EXAMPLES
+# ============================================================================
+# Created: 2025-01-08 18:10:22
+# Version: Final Release v2.1
+# 
+# This file contains ALL available configuration options for the Enhanced Light Card
+# with detailed explanations and practical examples for each feature.
+# ============================================================================
+
+# ============================================================================
+# BASIC CONFIGURATION EXAMPLE
+# ============================================================================
+# Minimal configuration with just the required entity
+- type: custom:mushroom-enhanced-light-card
+  entity: light.living_room_lights
+  name: "Living Room"
+
+# ============================================================================
+# COMPLETE FEATURE SHOWCASE
+# ============================================================================
+# This example demonstrates ALL available features in one card
+- type: custom:mushroom-enhanced-light-card
+  entity: light.bedroom_lights
+  
+  # === BASIC ENTITY CONFIGURATION ===
+  name: "Complete Feature Demo"           # Custom display name (optional)
+  icon: "mdi:lightbulb-group"            # Custom icon (optional)
+  
+  # === LAYOUT & APPEARANCE ===
+  layout: "horizontal"                    # Layout: horizontal | vertical
+  fill_container: false                   # Fill container width: true | false
+  primary_info: "name"                    # Primary info: name | state | last-changed | last-updated | none
+  secondary_info: "state"                 # Secondary info: name | state | last-changed | last-updated | none
+  icon_type: "icon"                       # Icon type: icon | entity-picture | none
+  
+  # === ENHANCED LAYOUT OPTIONS ===
+  button_layout: "vertical-enhanced"      # Button layout: inline | vertical-enhanced
+  text_align: "center"                    # Text alignment: left | center | right
+  font_size: 16                          # Font size in pixels (default: 14)
+  icon_offset_x: 5                       # Icon horizontal offset in pixels (default: 0)
+  
+  # === LIGHT CONTROL FEATURES ===
+  show_brightness_control: true           # Show brightness slider: true | false
+  show_color_temp_control: true           # Show color temperature control: true | false
+  show_color_control: true                # Show color picker: true | false
+  collapsible_controls: false             # Collapse controls when light is off: true | false
+  use_light_color: true                   # Use light's color for icon: true | false
+  icon_color: "#ff9800"                   # Custom icon color (hex, rgb, or CSS color name)
+  show_brightness_percentage: true        # Show brightness percentage: true | false
+  
+  # === CARD STYLING ===
+  card_background_color: "#e3f2fd"        # Background color (hex, rgb, or CSS color name)
+  card_background_image: "/local/bg.jpg"  # Background image URL
+  card_background_image_opacity: 0.3      # Background image opacity (0.0 - 1.0)
+  card_background_image_position: "center" # Background image position (see position options below)
+  card_border_color: "#2196f3"            # Border color (hex, rgb, or CSS color name)
+  card_border_width: "2px"                # Border width (CSS units: px, em, etc.)
+  card_border_radius: "16px"              # Border radius (CSS units: px, em, %, etc.)
+  card_box_shadow: "0 4px 12px rgba(33,150,243,0.2)" # Box shadow (CSS box-shadow syntax)
+  
+  # === ACTION CONFIGURATION ===
+  tap_action:                             # Action on tap
+    action: "toggle"                      # Action type: toggle | turn-on | turn-off | more-info | navigate | call-service | none
+  hold_action:                            # Action on hold
+    action: "more-info"                   # Standard Home Assistant more-info dialog
+  double_tap_action:                      # Action on double-tap
+    action: "enhanced-more-info"          # Custom enhanced popup
+  
+  # === ENHANCED POPUP CONFIGURATION ===
+  enhanced_popup:
+    title: "Bedroom Lighting Control"     # Popup title (optional, defaults to entity name)
+    show_sub_entities: true               # Show related light entities: true | false
+    show_effects: true                    # Show light effects: true | false
+    show_scenes: true                     # Show scene controls: true | false
+    show_advanced_controls: true          # Show advanced controls: true | false
+    card_type: "mushroom"                 # Card type for sub-entities: mushroom | standard
+    background_color: "#f5f5f5"           # Popup background color
+    sub_entities_text: "Related lights:"  # Text above sub-entities
+    text_style:                           # Custom text styling
+      font_size: "14px"
+      font_weight: "500"
+      color: "#333333"
+      background_color: "#ffffff"
+      text_align: "center"
+      padding: "12px"
+      border_radius: "8px"
+
+# ============================================================================
+# BACKGROUND IMAGE EXAMPLES - NEW FEATURES
+# ============================================================================
+
+# --- GLASS EFFECT WITH SUBTLE BACKGROUND ---
+- type: custom:mushroom-enhanced-light-card
+  entity: light.kitchen_lights
+  name: "Glass Effect"
+  button_layout: "vertical-enhanced"
+  text_align: "center"
+  show_brightness_control: true
+  show_color_temp_control: true
+  show_color_control: true
+  
+  # Glass-like styling with very subtle background image
+  card_background_image: "/local/logo.png"
+  card_background_image_opacity: 0.15          # Very subtle - 15% opacity
+  card_background_image_position: "center"     # Centered positioning
+  card_background_color: "rgba(255, 255, 255, 0.9)"
+  card_border_color: "rgba(255, 255, 255, 0.3)"
+  card_border_width: "2px"
+  card_border_radius: "25px"
+  card_box_shadow: "0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)"
+
+# --- DARK THEME WITH NEON ACCENT ---
+- type: custom:mushroom-enhanced-light-card
+  entity: light.gaming_room
+  name: "Gaming Setup"
+  button_layout: "vertical-enhanced"
+  text_align: "center"
+  show_brightness_control: true
+  show_color_control: true
+  
+  # Dark theme with background image positioned in corner
+  card_background_image: "/local/gaming-bg.jpg"
+  card_background_image_opacity: 0.08          # Very dark - 8% opacity
+  card_background_image_position: "right bottom" # Bottom-right corner
+  card_background_color: "#1a1a1a"
+  card_border_color: "#00ffff"
+  card_border_width: "3px"
+  card_border_radius: "15px"
+  card_box_shadow: "0 0 20px rgba(0, 255, 255, 0.3), 0 4px 15px rgba(0, 0, 0, 0.5)"
+
+# --- WARM GRADIENT THEME ---
+- type: custom:mushroom-enhanced-light-card
+  entity: light.living_room
+  name: "Cozy Living"
+  button_layout: "vertical-enhanced"
+  text_align: "center"
+  show_brightness_control: true
+  show_color_temp_control: true
+  
+  # Warm theme with background image on left side
+  card_background_image: "/local/warm-texture.jpg"
+  card_background_image_opacity: 0.25          # Medium opacity - 25%
+  card_background_image_position: "left top"   # Top-left positioning
+  card_background_color: "linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%)"
+  card_border_color: "#ff6b6b"
+  card_border_width: "2px"
+  card_border_radius: "30px"
+  card_box_shadow: "0 6px 25px rgba(255, 107, 107, 0.4)"
+
+# --- FULL OPACITY BACKGROUND ---
+- type: custom:mushroom-enhanced-light-card
+  entity: light.outdoor_lights
+  name: "Outdoor Lighting"
+  button_layout: "inline"
+  text_align: "left"
+  
+  # Full opacity background image (no transparency)
+  card_background_image: "/local/outdoor-scene.jpg"
+  card_background_image_opacity: 1.0           # Full opacity - 100%
+  card_background_image_position: "center"     # Centered
+  card_border_radius: "20px"
+  card_box_shadow: "0 4px 20px rgba(0, 0, 0, 0.3)"
+
+# --- WATERMARK STYLE ---
+- type: custom:mushroom-enhanced-light-card
+  entity: light.office_lights
+  name: "Office"
+  button_layout: "inline"
+  
+  # Very subtle watermark-style background
+  card_background_image: "/local/company-logo.png"
+  card_background_image_opacity: 0.05          # Ultra-subtle - 5% opacity
+  card_background_image_position: "right"      # Right-aligned
+  card_background_color: "#ffffff"
+  card_border_color: "#e0e0e0"
+  card_border_width: "1px"
+  card_border_radius: "12px"
+
+# ============================================================================
+# BACKGROUND IMAGE POSITION OPTIONS
+# ============================================================================
+
+# --- CENTER POSITIONING (DEFAULT) ---
+- type: custom:mushroom-enhanced-light-card
+  entity: light.center_demo
+  name: "Center Position"
+  card_background_image: "/local/demo-bg.jpg"
+  card_background_image_position: "center"     # Default - centers the image
+
+# --- EDGE POSITIONING ---
+- type: custom:mushroom-enhanced-light-card
+  entity: light.left_demo
+  name: "Left Position"
+  card_background_image: "/local/demo-bg.jpg"
+  card_background_image_position: "left"       # Aligns to left edge
+
+- type: custom:mushroom-enhanced-light-card
+  entity: light.right_demo
+  name: "Right Position"
+  card_background_image: "/local/demo-bg.jpg"
+  card_background_image_position: "right"      # Aligns to right edge
+
+- type: custom:mushroom-enhanced-light-card
+  entity: light.top_demo
+  name: "Top Position"
+  card_background_image: "/local/demo-bg.jpg"
+  card_background_image_position: "top"        # Aligns to top edge
+
+- type: custom:mushroom-enhanced-light-card
+  entity: light.bottom_demo
+  name: "Bottom Position"
+  card_background_image: "/local/demo-bg.jpg"
+  card_background_image_position: "bottom"     # Aligns to bottom edge
+
+# --- CORNER POSITIONING ---
+- type: custom:mushroom-enhanced-light-card
+  entity: light.top_left_demo
+  name: "Top-Left Corner"
+  card_background_image: "/local/demo-bg.jpg"
+  card_background_image_position: "left top"   # Top-left corner
+
+- type: custom:mushroom-enhanced-light-card
+  entity: light.top_right_demo
+  name: "Top-Right Corner"
+  card_background_image: "/local/demo-bg.jpg"
+  card_background_image_position: "right top"  # Top-right corner
+
+- type: custom:mushroom-enhanced-light-card
+  entity: light.bottom_left_demo
+  name: "Bottom-Left Corner"
+  card_background_image: "/local/demo-bg.jpg"
+  card_background_image_position: "left bottom" # Bottom-left corner
+
+- type: custom:mushroom-enhanced-light-card
+  entity: light.bottom_right_demo
+  name: "Bottom-Right Corner"
+  card_background_image: "/local/demo-bg.jpg"
+  card_background_image_position: "right bottom" # Bottom-right corner
+
+# ============================================================================
+# OPACITY DEMONSTRATION EXAMPLES
+# ============================================================================
+
+# --- OPACITY RANGE DEMONSTRATION ---
+- type: custom:mushroom-enhanced-light-card
+  entity: light.opacity_demo_1
+  name: "Ultra Subtle (5%)"
+  card_background_image: "/local/demo-pattern.jpg"
+  card_background_image_opacity: 0.05          # 5% - barely visible watermark
+
+- type: custom:mushroom-enhanced-light-card
+  entity: light.opacity_demo_2
+  name: "Subtle (15%)"
+  card_background_image: "/local/demo-pattern.jpg"
+  card_background_image_opacity: 0.15          # 15% - subtle background
+
+- type: custom:mushroom-enhanced-light-card
+  entity: light.opacity_demo_3
+  name: "Light (30%)"
+  card_background_image: "/local/demo-pattern.jpg"
+  card_background_image_opacity: 0.30          # 30% - light background
+
+- type: custom:mushroom-enhanced-light-card
+  entity: light.opacity_demo_4
+  name: "Medium (50%)"
+  card_background_image: "/local/demo-pattern.jpg"
+  card_background_image_opacity: 0.50          # 50% - medium background
+
+- type: custom:mushroom-enhanced-light-card
+  entity: light.opacity_demo_5
+  name: "Strong (75%)"
+  card_background_image: "/local/demo-pattern.jpg"
+  card_background_image_opacity: 0.75          # 75% - strong background
+
+- type: custom:mushroom-enhanced-light-card
+  entity: light.opacity_demo_6
+  name: "Full Opacity (100%)"
+  card_background_image: "/local/demo-pattern.jpg"
+  card_background_image_opacity: 1.0           # 100% - full background
+
+# ============================================================================
+# LAYOUT EXAMPLES
+# ============================================================================
+
+# --- VERTICAL ENHANCED LAYOUT ---
+- type: custom:mushroom-enhanced-light-card
+  entity: light.bedroom_main
+  name: "Bedroom Main"
+  button_layout: "vertical-enhanced"
+  text_align: "center"
+  font_size: 18
+  show_brightness_control: true
+  show_color_temp_control: true
+  show_color_control: true
+  collapsible_controls: false
+
+# --- INLINE LAYOUT ---
+- type: custom:mushroom-enhanced-light-card
+  entity: light.hallway
+  name: "Hallway"
+  button_layout: "inline"
+  text_align: "left"
+  show_brightness_control: true
+  show_color_temp_control: false
+  show_color_control: false
+
+# ============================================================================
+# STYLING EXAMPLES
+# ============================================================================
+
+# --- MODERN CARD ---
+- type: custom:mushroom-enhanced-light-card
+  entity: light.modern_fixture
+  name: "Modern Style"
+  card_background_color: "#ffffff"
+  card_border_color: "#e0e0e0"
+  card_border_width: "1px"
+  card_border_radius: "12px"
+  card_box_shadow: "0 2px 8px rgba(0,0,0,0.1)"
+
+# --- COLORFUL CARD ---
+- type: custom:mushroom-enhanced-light-card
+  entity: light.colorful_lights
+  name: "Colorful Theme"
+  card_background_color: "#e8f5e8"
+  card_border_color: "#4caf50"
+  card_border_width: "3px"
+  card_border_radius: "20px"
+  card_box_shadow: "0 4px 16px rgba(76,175,80,0.3)"
+
+# --- DARK THEME CARD ---
+- type: custom:mushroom-enhanced-light-card
+  entity: light.dark_theme
+  name: "Dark Theme"
+  card_background_color: "#2d2d2d"
+  card_border_color: "#555555"
+  card_border_width: "2px"
+  card_border_radius: "16px"
+  card_box_shadow: "0 4px 12px rgba(0,0,0,0.5)"
+
+# ============================================================================
+# POPUP EXAMPLES
+# ============================================================================
+
+# --- BASIC POPUP ---
+- type: custom:mushroom-enhanced-light-card
+  entity: light.main_chandelier
+  name: "Main Chandelier"
+  double_tap_action:
+    action: "enhanced-more-info"
+  enhanced_popup:
+    title: "Chandelier Control"
+    show_sub_entities: true
+    show_effects: true
+
+# --- ADVANCED POPUP ---
+- type: custom:mushroom-enhanced-light-card
+  entity: light.smart_bulb_group
+  name: "Smart Bulbs"
+  hold_action:
+    action: "enhanced-more-info"
+  enhanced_popup:
+    title: "Smart Lighting System"
+    show_sub_entities: true
+    show_effects: true
+    show_scenes: true
+    show_advanced_controls: true
+    background_color: "#f0f8ff"
+    sub_entities_text: "Individual bulb controls:"
+    text_style:
+      font_size: "16px"
+      font_weight: "600"
+      color: "#1976d2"
+      background_color: "#e3f2fd"
+      text_align: "center"
+      padding: "16px 20px"
+      border_radius: "12px"
+
+# ============================================================================
+# TYPOGRAPHY EXAMPLES
+# ============================================================================
+
+# --- LARGE TEXT ---
+- type: custom:mushroom-enhanced-light-card
+  entity: light.large_text_demo
+  name: "Large Text"
+  font_size: 24
+  text_align: "center"
+  button_layout: "vertical-enhanced"
+
+# --- SMALL TEXT ---
+- type: custom:mushroom-enhanced-light-card
+  entity: light.small_text_demo
+  name: "Small Text"
+  font_size: 12
+  text_align: "left"
+
+# --- CENTERED TEXT ---
+- type: custom:mushroom-enhanced-light-card
+  entity: light.centered_demo
+  name: "Centered Text"
+  text_align: "center"
+  font_size: 16
+
+# --- RIGHT ALIGNED TEXT ---
+- type: custom:mushroom-enhanced-light-card
+  entity: light.right_aligned_demo
+  name: "Right Aligned"
+  text_align: "right"
+  font_size: 14
+
+# ============================================================================
+# ICON EXAMPLES
+# ============================================================================
+
+# --- CUSTOM ICON ---
+- type: custom:mushroom-enhanced-light-card
+  entity: light.custom_icon_demo
+  name: "Custom Icon"
+  icon: "mdi:ceiling-light"
+  icon_color: "#ff9800"
+
+# --- ICON OFFSET ---
+- type: custom:mushroom-enhanced-light-card
+  entity: light.offset_demo
+  name: "Icon Offset"
+  icon_offset_x: 10
+  text_align: "left"
+
+# --- ENTITY PICTURE ---
+- type: custom:mushroom-enhanced-light-card
+  entity: light.custom_fixture
+  name: "Custom Fixture"
+  icon_type: "entity-picture"
+  show_brightness_control: true
+  card_border_radius: "50%"
+
+# --- FILL CONTAINER ---
+- type: custom:mushroom-enhanced-light-card
+  entity: light.main_lights
+  name: "Main Lights - Full Width"
+  fill_container: true
+  button_layout: "vertical-enhanced"
+  text_align: "center"
+  show_brightness_control: true
+
+# ============================================================================
+# NOTES & TIPS
+# ============================================================================
+# 
+# 1. COLOR VALUES: Use hex (#ff0000), rgb (rgb(255,0,0)), or CSS color names (red)
+# 2. SIZE VALUES: Use CSS units like px, em, rem, %, etc.
+# 3. SHADOW VALUES: Use CSS box-shadow syntax: "offset-x offset-y blur-radius spread-radius color"
+# 4. BACKGROUND IMAGES: Use /local/ for local files or full URLs for external images
+# 5. BACKGROUND OPACITY: Range from 0.0 (invisible) to 1.0 (full opacity)
+# 6. BACKGROUND POSITION: 9 options - center, left, right, top, bottom, and 4 corners
+# 7. ACTIONS: enhanced-more-info opens the custom popup, more-info opens standard HA dialog
+# 8. POPUP STYLING: All popup text_style properties are optional
+# 9. LAYOUT: horizontal works best with inline buttons, vertical with vertical-enhanced
+# 10. CONTROLS: Only show controls that your light entity actually supports
+# 11. PERFORMANCE: Background images may affect loading time, use optimized images
+# 12. ACCESSIBILITY: Ensure sufficient color contrast for text readability
+# 13. OPACITY PERFORMANCE: Full opacity (1.0) uses optimized direct CSS rendering
+# 14. POSITIONING: Corner positions work great for logos and decorative elements
+#
+# ============================================================================

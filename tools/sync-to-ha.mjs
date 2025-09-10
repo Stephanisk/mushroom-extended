@@ -13,9 +13,8 @@ if (!existsSync(src)) {
 await rm(dst, { recursive: true, force: true });
 await cp(src, dst, { recursive: true });
 
-// Generate a loader that imports all mushroom*.js in this folder
-const files = (await readdir(dst)).filter(f => f.startsWith("mushroom") && f.endsWith(".js"));
-files.sort();
+// Generate a loader that imports only the main mushroom.js (complete build)
+const files = (await readdir(dst)).filter(f => f === "mushroom.js");
 
 const imports = files.map(f => `import "./${f}";`).join("\n");
 const timestamp = Date.now();

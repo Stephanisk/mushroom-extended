@@ -1,0 +1,91 @@
+# Example Dashboard Configuration
+# Copy this to test your custom cards
+
+title: Custom Mushroom Cards Demo
+views:
+  - title: Enhanced Light Cards
+    cards:
+      # Basic Enhanced Light Card
+      - type: custom:mushroom-enhanced-light-card
+        entity: light.living_room  # Replace with your light entity
+        name: Living Room Light
+        icon: mdi:lightbulb
+        
+      # Enhanced Light Card with Styling
+      - type: custom:mushroom-enhanced-light-card
+        entity: light.bedroom  # Replace with your light entity
+        name: Bedroom Light
+        icon: mdi:lightbulb-outline
+        card_background_color: "#1f1f1f"
+        card_border_color: "#4CAF50"
+        card_border_width: "2px"
+        card_border_radius: "15px"
+        card_box_shadow: "0 4px 8px rgba(0,0,0,0.3)"
+        
+      # Enhanced Light Card with Background Image
+      - type: custom:mushroom-enhanced-light-card
+        entity: light.kitchen  # Replace with your light entity
+        name: Kitchen Light
+        icon: mdi:ceiling-light
+        card_background_image: "/local/images/kitchen-bg.jpg"  # Add your image
+        card_background_image_opacity: 0.3
+        card_background_image_position: "center"
+        
+      # Enhanced Light Card with Popup
+      - type: custom:mushroom-enhanced-light-card
+        entity: light.office  # Replace with your light entity
+        name: Office Light
+        icon: mdi:desk-lamp
+        enhanced_popup:
+          title: "Office Lighting Control"
+          show_sub_entities: true
+          show_effects: true
+          show_advanced_controls: true
+          background_color: "#2196F3"
+          
+  - title: Split Layout Demo
+    cards:
+      # Split Layout Card
+      - type: custom:mushroom-split-layout-card
+        sidebar_width: 30
+        gap: 16
+        sidebar:
+          background_color: "#1a1a1a"
+          padding: "16px"
+          border_radius: "12px"
+          cards:
+            - type: custom:mushroom-enhanced-light-card
+              entity: light.hallway  # Replace with your entity
+              name: Hallway
+              icon: mdi:lightbulb
+              
+            - type: mushroom-entity-card
+              entity: sensor.temperature  # Replace with your entity
+              name: Temperature
+              icon: mdi:thermometer
+              
+        main:
+          background_color: "#0f0f0f"
+          padding: "16px"
+          border_radius: "12px"
+          cards:
+            - type: grid
+              columns: 2
+              cards:
+                - type: custom:mushroom-enhanced-light-card
+                  entity: light.living_room  # Replace with your entity
+                  name: Living Room
+                  
+                - type: custom:mushroom-enhanced-light-card
+                  entity: light.bedroom  # Replace with your entity
+                  name: Bedroom
+                  
+                - type: custom:mushroom-enhanced-light-card
+                  entity: light.kitchen  # Replace with your entity
+                  name: Kitchen
+                  
+                - type: custom:mushroom-enhanced-light-card
+                  entity: light.office  # Replace with your entity
+                  name: Office
+
+# Note: Replace all entity names (light.living_room, etc.) with your actual Home Assistant entities

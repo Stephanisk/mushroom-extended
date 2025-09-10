@@ -50,28 +50,64 @@ views:
             backdrop_filter: "blur(5px) brightness(1.1)"  # Glass effect
           
           sidebar:
-            background_color: "rgba(255, 255, 255, 0.1)"
-            background_image: "linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)"
+            # Beautiful gradient background - you can use any CSS gradient!
+            background_color: "linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)"
             background_size: "cover"
             background_position: "center"
-            opacity: 0.95
+            opacity: 0.98
             padding: "24px"
             border_radius: "20px"
-            border: "1px solid rgba(255, 255, 255, 0.2)"
-            box_shadow: "0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+            border: "2px solid rgba(255, 255, 255, 0.3)"
+            box_shadow: "0 12px 40px rgba(0, 0, 0, 0.4), inset 0 2px 0 rgba(255, 255, 255, 0.2)"
             overflow: "auto"
-            custom_css: "backdrop-filter: blur(10px);"
+            custom_css: "backdrop-filter: blur(15px); color: white;"
             cards:
             - type: markdown
               content: |
-                ## Sidebar Controls
-                This is your 28% sidebar area
+                ## 🎨 Gradient Sidebar
+                
+                **This sidebar demonstrates:**
+                - Linear gradient background
+                - Multiple color stops
+                - Glass effect with blur
+                - Custom styling options
+                
+                **Available gradient types:**
+                - Linear gradients
+                - Radial gradients  
+                - Multi-stop gradients
+                - Solid colors with opacity
+                
+                **Try different angles:**
+                - 0deg = top to bottom
+                - 45deg = diagonal
+                - 90deg = left to right
+                - 135deg = diagonal (reverse)
+                
+            - type: markdown
+              content: |
+                ## 🌈 Example Gradients
+                
+                **Sunset:** 
+                `linear-gradient(45deg, #fa709a 0%, #fee140 100%)`
+                
+                **Ocean:** 
+                `linear-gradient(135deg, #667eea 0%, #764ba2 100%)`
+                
+                **Forest:** 
+                `linear-gradient(180deg, #56ab2f 0%, #a8e6cf 100%)`
+                
+                **Fire:** 
+                `linear-gradient(45deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%)`
           main:
+            # Background image with almost full transparency (90% transparent overlay)
+            background_image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+            background_size: "cover"
+            background_position: "center"
+            background_repeat: "no-repeat"
+            background_attachment: "fixed"
+            # White overlay at 90% opacity (makes image almost fully transparent)
             background_color: "rgba(255, 255, 255, 0.9)"
-            background_image: "linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%), linear-gradient(-45deg, rgba(255,255,255,0.1) 25%, transparent 25%)"
-            background_size: "20px 20px"
-            background_position: "0 0, 0 10px"
-            opacity: 0.98
             padding: "32px"
             border_radius: "15px"
             border: "1px solid rgba(255, 255, 255, 0.3)"
@@ -82,8 +118,19 @@ views:
             # Top row - full width header
             - type: markdown
               content: |
-                # Main Dashboard
-                This is your 72% main content area
+                # 🖼️ Background Image Demo
+                
+                **This main section demonstrates:**
+                - Background image with 90% transparent overlay
+                - Fixed attachment (image stays in place when scrolling)
+                - Content remains fully opaque and readable
+                - Beautiful mountain landscape from Unsplash
+                
+                **Configuration used:**
+                ```yaml
+                background_image: "https://images.unsplash.com/photo-..."
+                background_color: "rgba(255, 255, 255, 0.9)"  # 90% white overlay
+                ```
             
             # Multiple columns using horizontal-stack with vertical-stacks (independent heights)
             - type: horizontal-stack

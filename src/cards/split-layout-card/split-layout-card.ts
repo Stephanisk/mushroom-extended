@@ -204,7 +204,7 @@ export class SplitLayoutCard
 
     const logoStyle = {
       position: "absolute",
-      "z-index": (logo.z_index || 1000).toString(),
+      "z-index": (logo.z_index || 9999).toString(),
       opacity: (logo.opacity || 1).toString(),
       width: logo.width || logo.size?.split(' ')[0] || "120px",
       height: logo.height || logo.size?.split(' ')[1] || "auto",
@@ -241,11 +241,25 @@ export class SplitLayoutCard
     const gap = this._config.gap || 12;
 
     // Advanced sidebar styling
+    const sidebarBgColor = this._config.sidebar?.background_color || "transparent";
+    const isGradient = sidebarBgColor.includes("gradient");
+    const hasSidebarBgImage = this._config.sidebar?.background_image;
+    
+    // Handle background image with overlay
+    let sidebarBgImageValue = "none";
+    if (isGradient) {
+      sidebarBgImageValue = sidebarBgColor;
+    } else if (hasSidebarBgImage && sidebarBgColor !== "transparent") {
+      // Combine overlay color with background image
+      sidebarBgImageValue = `linear-gradient(${sidebarBgColor}, ${sidebarBgColor}), url(${hasSidebarBgImage})`;
+    } else if (hasSidebarBgImage) {
+      // Just the background image without overlay
+      sidebarBgImageValue = `url(${hasSidebarBgImage})`;
+    }
+    
     const sidebarStyle = {
-      "--split-sidebar-bg": this._config.sidebar?.background_color || "transparent",
-      "--split-sidebar-bg-image": this._config.sidebar?.background_image 
-        ? `url(${this._config.sidebar.background_image})` 
-        : "none",
+      "--split-sidebar-bg": (isGradient || hasSidebarBgImage) ? "transparent" : sidebarBgColor,
+      "--split-sidebar-bg-image": sidebarBgImageValue,
       "--split-sidebar-bg-size": this._config.sidebar?.background_size || "cover",
       "--split-sidebar-bg-position": this._config.sidebar?.background_position || "center",
       "--split-sidebar-bg-repeat": this._config.sidebar?.background_repeat || "no-repeat",
@@ -262,11 +276,25 @@ export class SplitLayoutCard
     };
 
     // Advanced main styling
+    const mainBgColor = this._config.main?.background_color || "transparent";
+    const isMainGradient = mainBgColor.includes("gradient");
+    const hasMainBgImage = this._config.main?.background_image;
+    
+    // Handle background image with overlay
+    let mainBgImageValue = "none";
+    if (isMainGradient) {
+      mainBgImageValue = mainBgColor;
+    } else if (hasMainBgImage && mainBgColor !== "transparent") {
+      // Combine overlay color with background image
+      mainBgImageValue = `linear-gradient(${mainBgColor}, ${mainBgColor}), url(${hasMainBgImage})`;
+    } else if (hasMainBgImage) {
+      // Just the background image without overlay
+      mainBgImageValue = `url(${hasMainBgImage})`;
+    }
+    
     const mainStyle = {
-      "--split-main-bg": this._config.main?.background_color || "transparent", 
-      "--split-main-bg-image": this._config.main?.background_image
-        ? `url(${this._config.main.background_image})`
-        : "none",
+      "--split-main-bg": (isMainGradient || hasMainBgImage) ? "transparent" : mainBgColor, 
+      "--split-main-bg-image": mainBgImageValue,
       "--split-main-bg-size": this._config.main?.background_size || "cover",
       "--split-main-bg-position": this._config.main?.background_position || "center",
       "--split-main-bg-repeat": this._config.main?.background_repeat || "no-repeat",
@@ -283,11 +311,25 @@ export class SplitLayoutCard
     };
 
     // Container styling
+    const containerBgColor = this._config.container_style?.background_color || "transparent";
+    const isContainerGradient = containerBgColor.includes("gradient");
+    const hasContainerBgImage = this._config.container_style?.background_image;
+    
+    // Handle background image with overlay
+    let containerBgImageValue = "none";
+    if (isContainerGradient) {
+      containerBgImageValue = containerBgColor;
+    } else if (hasContainerBgImage && containerBgColor !== "transparent") {
+      // Combine overlay color with background image
+      containerBgImageValue = `linear-gradient(${containerBgColor}, ${containerBgColor}), url(${hasContainerBgImage})`;
+    } else if (hasContainerBgImage) {
+      // Just the background image without overlay
+      containerBgImageValue = `url(${hasContainerBgImage})`;
+    }
+    
     const containerStyle = {
-      "--container-bg": this._config.container_style?.background_color || "transparent",
-      "--container-bg-image": this._config.container_style?.background_image
-        ? `url(${this._config.container_style.background_image})`
-        : "none",
+      "--container-bg": (isContainerGradient || hasContainerBgImage) ? "transparent" : containerBgColor,
+      "--container-bg-image": containerBgImageValue,
       "--container-bg-size": this._config.container_style?.background_size || "cover",
       "--container-bg-position": this._config.container_style?.background_position || "center",
       "--container-bg-repeat": this._config.container_style?.background_repeat || "no-repeat",
@@ -382,6 +424,9 @@ export class SplitLayoutCard
         height: 100%;
         width: 100%;
         box-sizing: border-box;
+        /* Fix z-index stacking context issues caused by opacity */
+        isolation: isolate;
+        position: relative;
       }
       
       .split-layout {
@@ -433,6 +478,8 @@ export class SplitLayoutCard
         min-height: var(--split-main-min-height);
         max-height: var(--split-main-max-height);
         box-sizing: border-box;
+        position: relative;
+        z-index: 1;
       }
 
       .card-wrapper {
@@ -604,6 +651,11 @@ export class SplitLayoutCard
         pointer-events: none;
         max-width: 200px;
         max-height: 200px;
+        /* Ensure logo is above all content */
+        z-index: 9999 !important;
+        position: absolute !important;
+        /* Create new stacking context to escape container isolation */
+        transform: translateZ(0);
       }
 
       /* Responsive behavior for very small screens */

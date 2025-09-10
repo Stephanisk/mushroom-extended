@@ -1,0 +1,16 @@
+# Add this to your /config/configuration.yaml file
+
+# Custom Mushroom Cards Resource
+lovelace:
+  resources:
+    # Official Mushroom Cards (if installed via HACS)
+    - url: /hacsfiles/lovelace-mushroom/mushroom.js
+      type: module
+    
+    # Your Custom Cards (this file)
+    - url: /local/mushroom-custom-cards.js
+      type: module
+
+# Optional: Enable frontend development mode for easier debugging
+# frontend:
+#   development: true
